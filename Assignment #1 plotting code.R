@@ -1,13 +1,11 @@
 #plot 1
 datafile<-"./household_power_consumption.txt"
-powerdata<-read.table(datafile,header = TRUE,sep=";", stringsAsFactors = FALSE,d
-                      ec = ".")
+powerdata<-read.table(datafile,header = TRUE,sep=";", stringsAsFactors = FALSE,dec = ".")
 head(powerdata,1)
 subsetdata<-powerdata[powerdata$Date %in% c("1/2/2007","2/2/2007"),]
 GloActPower<-as.numeric(subsetdata$Global_active_power)
 png("plot1.png")
-hist(GloActPower,col = "red",main = "Global Active Power",xlab = "Global Active 
-     Power (kilowatts)")
+hist(GloActPower,col = "red",main = "Global Active Power",xlab = "Global Active Power (kilowatts)")
 dev.off()
 #plot 2
 datetime <- strptime(paste(subsetdata$Date, subsetdata$Time, sep=" "), "%d/%m/%Y %H:%M:%S") 
